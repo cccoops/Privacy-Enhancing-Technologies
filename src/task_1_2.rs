@@ -1,16 +1,24 @@
 // Function: factorial (recursive)
-pub fn factorial(n: u32) -> u32 {}
+pub fn factorial(n: u32) -> u32 {
+    if n == 0 { 1 } else { n * factorial(n - 1) }
+}
 
 // Function: is_prime (using factorial function)
-pub fn is_prime(n: u32) -> bool {}
+pub fn is_prime(n: u32) -> bool {
+    (factorial(n - 1) + 1) % n == 0
+}
 
 // Ownership and Borrowing
 
 // Function: reverse_string (mutably borrow and reverse in place)
-pub fn reverse_string(s: &mut String) {}
+pub fn reverse_string(s: &mut String) {
+    *s = s.chars().rev().collect();
+}
 
 // Function: concat_strings (concatenates two &str and returns a String)
-pub fn concat_strings(s1: &str, s2: &str) -> String {}
+pub fn concat_strings(s1: &str, s2: &str) -> String {
+    format!("{}{}", s1, s2)
+}
 
 // Slices
 
