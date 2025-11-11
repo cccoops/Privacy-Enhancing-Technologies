@@ -23,4 +23,16 @@ pub fn concat_strings(s1: &str, s2: &str) -> String {
 // Slices
 
 // Function: find_max (finds the maximum value in a slice of integers)
-pub fn find_max(slice: &[i32]) -> Option<i32> {}
+pub fn find_max(slice: &[i32]) -> Option<i32> {
+    if slice.is_empty() {
+        None
+    } else {
+        let mut res = slice[0];
+        for i in 1..slice.len() {
+            if slice[i] > res {
+                res = slice[i];
+            }
+        }
+        Some(res)
+    }
+}
