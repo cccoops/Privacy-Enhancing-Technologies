@@ -43,6 +43,18 @@ fn main() {
     println!("Max value in slice is: {:?}", max);
     println!();
     println!("[Testing task 1.3]");
+    let s = task_1_3::Student::new_student("Alice".to_string(), 20, 1.5);
+    s.display();
+
+    let red = task_1_3::TrafficLight::Red;
+    println!("Red light duration: {}s", red.light_duration());
+
+    match task_1_3::safe_divide(10, 0) {
+        Some(v) => println!("10 / 0 = {}", v),
+        None => println!("Cannot divide by zero"),
+    }
+    println!();
+    println!("[Testing task 1.4]");
 
     let vector = vec![1, 2, 3, 4, 5];
     let vector_squared = task_1_4::square_elements(&vector);
