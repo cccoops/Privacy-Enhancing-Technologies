@@ -1,6 +1,4 @@
 use std::collections::HashMap;
-use std::collections::hash_map;
-use std::path::PrefixComponent;
 
 mod task_1_1;
 mod task_1_2;
@@ -9,7 +7,6 @@ mod task_1_4;
 mod task_1_5;
 
 fn main() {
-<<<<<<< HEAD
     println!("[Testing task 1.1]");
     println!(
         "The max of 99, 5 and 42 is {}",
@@ -66,7 +63,4 @@ fn main() {
 
     let sum_odd_numbers = task_1_4::sum_odd_numbers(&vector);
     println!("{:?}", sum_odd_numbers);
-=======
-    println!("Hello World")
->>>>>>> 9529b8fec8ce1b12bf6d57f4fe91a9d6f591baec
 }
