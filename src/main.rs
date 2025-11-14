@@ -5,7 +5,7 @@ mod task_1_4;
 mod task_1_5;
 
 fn main() {
-    println!("[Testing task 1.1]");
+    println!("=== Testing task 1.1: Initial Tests ===");
     println!(
         "The max of 99, 5 and 42 is {}",
         task_1_1::max_of_three(99, 5, 42)
@@ -26,7 +26,7 @@ fn main() {
     println!("Should be invalid: {}", task_1_1::day_of_week(9));
     println!("Should be invalid: {}", task_1_1::day_of_week(0));
     println!();
-    println!("[Testing task 1.2]");
+    println!("=== Testing task 1.2: Initial Tests ===");
     println!("Factorial of '6' is '720': {}", task_1_2::factorial(6));
     println!("'13' should be a prime: {}", task_1_2::is_prime(13));
     let mut s = String::from("hello");
@@ -40,19 +40,47 @@ fn main() {
     let max = task_1_2::find_max(&slice);
     println!("Max value in slice is: {:?}", max);
     println!();
-    println!("[Testing task 1.3]");
-    let s = task_1_3::Student::new_student("Alice".to_string(), 20, 1.5);
-    s.display();
+    println!("=== Testing task 1.3: Initial Tests ===");
 
-    let red = task_1_3::TrafficLight::Red;
-    println!("Red light duration: {}s", red.light_duration());
+    let s2 = task_1_3::Student::new_student("Bob".to_string(), 22, 3.85);
+    println!("Created student 2: {:?}", s2);
+    println!("Displaying student 2:");
+    s2.display();
+    println!("Directly accessing Bob's age: {}\n", s2.age);
 
-    match task_1_3::safe_divide(10, 0) {
-        Some(v) => println!("10 / 0 = {}", v),
-        None => println!("Cannot divide by zero"),
+    let yellow = task_1_3::TrafficLight::Yellow;
+    let green = task_1_3::TrafficLight::Green;
+
+    println!(
+        "Yellow light duration: {}s (Expected: 5s)",
+        yellow.light_duration()
+    );
+    println!(
+        "Green light duration: {}s (Expected: 30s)",
+        green.light_duration()
+    );
+    println!(
+        "Red light duration: {}s (Expected: 60s)\n",
+        task_1_3::TrafficLight::Red.light_duration()
+    );
+    match task_1_3::safe_divide(10, 5) {
+        Some(v) => println!("10 / 5 = {}", v),
+        None => println!("Error: Division failed unexpectedly"),
+    }
+    match task_1_3::safe_divide(100, 0) {
+        Some(v) => println!("Error: 100 / 0 = {}", v),
+        None => println!("100 / 0: Result: None"),
+    }
+    match task_1_3::safe_divide(0, 10) {
+        Some(v) => println!("0 / 10 = {}", v),
+        None => println!("0 / 10: Result: None"),
+    }
+    match task_1_3::safe_divide(-50, 5) {
+        Some(v) => println!("-50 / 5 = {}", v),
+        None => println!("Error: Division failed unexpectedly"),
     }
     println!();
-    println!("[Testing task 1.4]");
+    println!("=== Testing task 1.4: Initial Tests ===");
 
     let vector = vec![1, 2, 3, 4, 5];
     let vector_squared = task_1_4::square_elements(&vector);
@@ -74,7 +102,7 @@ fn main() {
     let sum_odd_numbers = task_1_4::sum_odd_numbers(&vector);
     println!("{:?}", sum_odd_numbers);
     println!();
-    println!("[Testing task 1.5]");
+    println!("=== Testing task 1.5: Initial Tests ===");
     let file_path = "numbers.txt";
     let content_ok = "10\n20\n30\n-5";
     if let Err(e) = task_1_5::write_file(file_path, content_ok) {
@@ -85,7 +113,7 @@ fn main() {
         Ok(sum) => println!("Successfully read and summed numbers. Result: {}", sum), // Should be 55
         Err(e) => eprintln!("Error during summation: {}", e),
     }
-    let content_err = "10\napple\n30";
+    let content_err = "10\nHello\n30";
     if let Err(e) = task_1_5::write_file(file_path, content_err) {
         eprintln!("Failed to update test file: {}", e);
         return;

@@ -30,9 +30,9 @@ impl TrafficLight {
     // Function to return the duration of each light
     pub fn light_duration(&self) -> u32 {
         match self {
-            TrafficLight::Red => 10,
+            TrafficLight::Red => 60,
             TrafficLight::Yellow => 5,
-            TrafficLight::Green => 1,
+            TrafficLight::Green => 30,
         }
     }
 }

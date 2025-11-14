@@ -1,6 +1,10 @@
 // Function: factorial (recursive)
 pub fn factorial(n: u32) -> u32 {
-    if n == 0 { 1 } else { n * factorial(n - 1) }
+    if n == 0 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
 }
 
 // Function: is_prime (using factorial function)
