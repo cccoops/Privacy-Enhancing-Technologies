@@ -1,6 +1,7 @@
 use std::fs::{self, File};
 use std::io::{self, BufRead, BufReader, Write};
 use std::path::Path;
+
 // Function to parse a string into an integer, returns Result type
 pub fn parse_integer(s: &str) -> Result<i32, String> {
     match s.parse::<i32>() {
@@ -19,10 +20,22 @@ pub fn read_file_lines<P: AsRef<Path>>(file_path: P) -> Result<Vec<String>, io::
     Ok(lines)
 }
 
-// // Function to write a string to a file, returns Result type
-// pub fn write_file<P: AsRef<Path>>(file_path: P, content: &str) -> Result<(), io::Error> {}
+// Function to write a string to a file, returns Result type
+pub fn write_file<P: AsRef<Path>>(file_path: P, content: &str) -> Result<(), io::Error> {
+    let mut file = File::create(file_path)?;
+    file.write_all(content.as_bytes())?;
+    Ok(())
+}
 
-// // Combining Error Handling and File I/O
+// Combining Error Handling and File I/O
 
-// // Function to read integers from file, compute their sum, and return the result
-// pub fn read_and_sum_integers<P: AsRef<Path>>(file_path: P) -> Result<i32, String> {}
+// Function to read integers from file, compute their sum, and return the result
+pub fn read_and_sum_integers<P: AsRef<Path>>(file_path: P) -> Result<i32, String> {
+    let lines = read_file_lines(file_path).map_err(|e| format!("File I/O Error: {}", e))?;
+    let mut res: i32 = 0;
+    for line in lines {
+        let i = parse_integer(&line)?;
+        res += i;
+    }
+    Ok(res)
+}

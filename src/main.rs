@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 mod task_1_1;
 mod task_1_2;
 mod task_1_3;
@@ -62,7 +60,7 @@ fn main() {
 
     let city1 = "London";
     let city2 = "Vienna";
-    let mut city_pops: HashMap<String, i32> = HashMap::new();
+    let mut city_pops: std::collections::HashMap<String, i32> = std::collections::HashMap::new();
     city_pops.insert("London".to_string(), 1000);
     city_pops.insert("Rome".to_string(), 500);
     city_pops.insert("Paris".to_string(), 100);
@@ -75,4 +73,29 @@ fn main() {
 
     let sum_odd_numbers = task_1_4::sum_odd_numbers(&vector);
     println!("{:?}", sum_odd_numbers);
+    println!();
+    println!("[Testing task 1.5]");
+    let file_path = "numbers.txt";
+    let content_ok = "10\n20\n30\n-5";
+    if let Err(e) = task_1_5::write_file(file_path, content_ok) {
+        eprintln!("Failed to create test file: {}", e);
+        return;
+    }
+    match task_1_5::read_and_sum_integers(file_path) {
+        Ok(sum) => println!("Successfully read and summed numbers. Result: {}", sum), // Should be 55
+        Err(e) => eprintln!("Error during summation: {}", e),
+    }
+    let content_err = "10\napple\n30";
+    if let Err(e) = task_1_5::write_file(file_path, content_err) {
+        eprintln!("Failed to update test file: {}", e);
+        return;
+    }
+    match task_1_5::read_and_sum_integers(file_path) {
+        Ok(sum) => println!("Successfully read and summed numbers. Result: {}", sum),
+        Err(e) => eprintln!("Error during summation: {}", e),
+    }
+
+    if let Err(e) = std::fs::remove_file(file_path) {
+        eprintln!("Failed to clean up test file: {}", e);
+    }
 }
