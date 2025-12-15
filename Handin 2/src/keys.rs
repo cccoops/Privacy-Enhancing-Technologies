@@ -17,9 +17,9 @@ pub struct KeyPair {
 impl KeyPair {
     /// Generate a Schnorr-style key pair
     pub fn generate() -> KeyPair {
-        let mut csprng = OsRng;
-        let private_key = Scalar::random(&mut csprng);
-        let public_key = private_key * &RISTRETTO_BASEPOINT_POINT;
+        let mut rng = OsRng;
+        let private_key = Scalar::random(&mut rng);
+        let public_key = &RISTRETTO_BASEPOINT_POINT * &private_key;
 
         KeyPair {
             private_key,
