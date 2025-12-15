@@ -1,0 +1,8 @@
+   0.062320695s  INFO prepare_target{force=false package_id=Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2) target="Exercise2"}: cargo::core::compiler::fingerprint: fingerprint dirty for Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2)/Check { test: false }/TargetInner { name: "Exercise2", doc: true, ..: with_path("/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2/src/main.rs", Edition2021) }
+   0.062364315s  INFO prepare_target{force=false package_id=Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2) target="Exercise2"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(Stale)
+   0.068236672s  INFO prepare_target{force=false package_id=Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2) target="Exercise2"}: cargo::core::compiler::fingerprint: fingerprint dirty for Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2)/Check { test: true }/TargetInner { name: "Exercise2", doc: true, ..: with_path("/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2/src/main.rs", Edition2021) }
+   0.068257760s  INFO prepare_target{force=false package_id=Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2) target="Exercise2"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(Stale)
+    Checking Exercise2 v0.1.0 (/Users/lukas/PET/Privacy-Enhancing-Technologies/Handin 2)
+error: could not compile `Exercise2` (bin "Exercise2") due to 18 previous errors; 20 warnings emitted
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `Exercise2` (bin "Exercise2" test) due to 23 previous errors; 19 warnings emitted
