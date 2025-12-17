@@ -48,7 +48,7 @@ impl AESCiphertext {
     /// Decrypts a ciphertext using AES-256-GCM with a Scalar as the AES key
     pub fn decrypt(scalar_key: &Scalar, aes_ciphertext: &AESCiphertext) -> Result<Vec<u8>, String> {
         let key = Self::scalar_to_aes_key(scalar_key);
-        let cipher = Aes256Gcm::new_from_slice(&key).map_err(|_| "Invalid key length")?;
+        let cipher = Aes256Gcm::new_from_slice(&key).unwrap();
         let nonce = Nonce::from_slice(&aes_ciphertext.nonce);
         let ciphertext = aes_ciphertext.ciphertext.as_slice();
         let plaintext = cipher

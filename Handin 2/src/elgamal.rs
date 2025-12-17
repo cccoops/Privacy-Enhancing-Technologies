@@ -26,7 +26,7 @@ impl ElGamalCiphertext {
     pub fn encrypt(message: &Scalar, public_key: &RistrettoPoint) -> ElGamalCiphertext {
         let mut rng = OsRng;
         let r = Scalar::random(&mut rng);
-        let c1 = RISTRETTO_BASEPOINT_POINT * r;
+        let c1 = r * RISTRETTO_BASEPOINT_POINT;
         let secret = r * public_key;
         let hashbytes = secret.compress().to_bytes();
         let mut hasher = Sha512::new();
